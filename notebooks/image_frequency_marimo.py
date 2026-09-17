@@ -196,14 +196,12 @@ def _(
 def _(mo):
     mo.md(
         """
-    **What to remember:** position in the spectrum encodes direction and rate of variation;
-    magnitude encodes strength; phase locates those patterns in the image.
-
-    Frequencies refer to the resized pixels. Grayscale is a weighted approximation on encoded RGB,
-    not calibrated linear-light luminance. The DFT assumes the image repeats at its boundaries;
-    a Hann window reduces boundary discontinuities but changes the input image. Removing the mean
-    and windowing therefore change what ‘exact recovery’ recovers. To transform color, process each
-    channel separately.
+    **What to remember:** 
+    * position in the spectrum encodes direction and rate of variation
+    * magnitude encodes strength
+    * phase locates those patterns in the image (positional shift)
+    * The DFT assumes the image repeats at its boundaries; Removing the mean and windowing therefore change what we recover. 
+    * To transform color, process each channel separately.
 
     Built with [marimo](https://docs.marimo.io/). The Python cells are editable in notebook mode.
     """
