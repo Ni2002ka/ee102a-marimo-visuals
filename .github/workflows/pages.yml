@@ -1,0 +1,89 @@
+name: Publish marimo notebook to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # This is the “install dependencies” part in their docs.
+      # It only needs marimo available to run the export command.
+      - name: Install marimo
+        run: |
+          python -m pip install --upgrade pip
+          pip install marimo==0.16.5
+
+      - name: 📄 Export notebooks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p site
+          cp -R assets site/assets
+
+          # Find notebooks under notebooks/ (only .py files)
+          mapfile -t NOTEBOOKS < <(find notebooks -maxdepth 1 -type f -name "*.py" | sort)
+
+          if [ ${#NOTEBOOKS[@]} -eq 0 ]; then
+            echo "No notebooks found in notebooks/"
+            exit 1
+          fi
+
+          # Export each notebook to its own subfolder
+          for nb in "${NOTEBOOKS[@]}"; do
+            name="$(basename "${nb%.py}")"
+            out="site/$name"
+            marimo export html-wasm "$nb" -o "$out" --mode run
+          done
+
+          # Create an index.html linking to each notebook
+          {
+            echo '<!doctype html><html><head><meta charset="utf-8"><title>EE102A · Marimo demos</title></head><body>'
+            echo '<h1>EE102A · Interactive demos</h1><p>Explore signals, images, and frequency-domain ideas.</p><ul>'
+            for nb in "${NOTEBOOKS[@]}"; do
+              name="$(basename "${nb%.py}")"
+              echo "<li><a href=\"${name}/\">${name}</a></li>"
+            done
+            echo '</ul></body></html>'
+          } > site/index.html
+
+
+      - name: 📦 Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: 🌐 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages

@@ -1,0 +1,10 @@
+__pycache__/
+__marimo__/
+*.pyc
+.DS_Store
+.venv/
+site/
+media/
+outputs/
+# Earlier Manim experiment remains local.
+frequency_demo.py
