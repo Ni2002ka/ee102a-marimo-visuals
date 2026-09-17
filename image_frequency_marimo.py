@@ -1,1 +1,0 @@
-notebooks/image_frequency_marimo.py
