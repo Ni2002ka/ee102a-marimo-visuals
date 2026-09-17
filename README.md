@@ -36,9 +36,3 @@ A notebook named `example.py` is served at `https://ni2002ka.github.io/ee102a-ma
 Python runs in the visitor's browser via Pyodide. This demo requires no backend server. The first visit downloads the Python runtime and dependencies.
 
 For browser-compatible file access, follow the image-loading cell: load the published `https://ni2002ka.github.io/ee102a-marimo-visuals/assets/<file>` URL asynchronously with `pyfetch` in Pyodide, and use a notebook-relative filesystem path locally. The workflow copies `assets/` into the published site. Use Pyodide-compatible dependencies.
-
-## Image-frequency demo notes
-
-The notebook preserves the supplied image, crops its white border, resizes it to 640 × 424, and computes weighted grayscale from encoded RGB. Frequencies are cycles per resized pixel. FFT magnitude is shown on a logarithmic scale, with phase retained for reconstruction. The frequency mask dims rejected bins and follows the spectrum zoom control. Hard frequency cutoffs can cause ringing, and the finite image is treated as periodic by the DFT.
-
-Generated exports and the earlier Manim experiment are kept out of version control.
