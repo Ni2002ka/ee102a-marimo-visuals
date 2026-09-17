@@ -89,7 +89,14 @@ def _(mo):
     """)
     remove_mean = mo.ui.checkbox(value=False, label="Remove mean brightness (DC)")
     zoom = mo.ui.slider(.025, .5, step=.025, value=.125, label="Spectrum half-width (cycles/pixel)", show_value=True)
-    mo.vstack([_intro, mo.hstack([remove_mean, zoom], wrap=True)])
+    _zoom_note = mo.md(
+        "**Spectrum half-width is just zoom:** a value of 0.125 displays "
+        "−0.125 to +0.125 cycles/pixel on each axis of the spectrum plots. "
+        "It does not change the FFT or which frequencies the filter keeps. "
+        "Smaller values zoom in near zero frequency; 0.5 shows the full "
+        "frequency range up to the Nyquist limit on each axis."
+    )
+    mo.vstack([_intro, mo.hstack([remove_mean, zoom], wrap=True), _zoom_note])
     return remove_mean, zoom
 
 
