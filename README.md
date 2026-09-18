@@ -6,6 +6,7 @@ Uses the same notebook-per-page GitHub Pages setup as [cvxpy-marimo-visuals](htt
 ## Demos
 
 - [Image → frequency domain](https://ni2002ka.github.io/ee102a-marimo-visuals/image_frequency_marimo/): inspect an image row, explore its 2D FFT, overlay frequency masks, and reconstruct with low-pass or high-pass filters.
+- [Complex numbers](https://ni2002ka.github.io/ee102a-marimo-visuals/complex_numbers_marimo/): connect Cartesian and polar form, explore conjugation and arithmetic geometrically, and inspect every Nth root.
 - [All demos](https://ni2002ka.github.io/ee102a-marimo-visuals/)
 
 ## Run locally
