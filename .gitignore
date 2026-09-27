@@ -6,5 +6,6 @@ __marimo__/
 site/
 media/
 outputs/
+tmp/
 # Earlier Manim experiment remains local.
 frequency_demo.py

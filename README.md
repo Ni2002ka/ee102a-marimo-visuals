@@ -7,6 +7,7 @@ Uses the same notebook-per-page GitHub Pages setup as [cvxpy-marimo-visuals](htt
 
 - [Complex numbers](https://ni2002ka.github.io/ee102a-marimo-visuals/complex_numbers_marimo/): connect Cartesian and polar form, explore conjugation and arithmetic geometrically, and inspect every Nth root.
 - [Image → frequency domain](https://ni2002ka.github.io/ee102a-marimo-visuals/image_frequency_marimo/): inspect an image row, explore its 2D FFT, overlay frequency masks, and reconstruct with low-pass or high-pass filters.
+- [Laser altimetry from orbit](https://ni2002ka.github.io/ee102a-marimo-visuals/laser_altimeter_marimo/): connect circular-orbit mechanics, pulse time-of-flight, sampled terrain profiles, and equatorial versus polar ground coverage.
 - [All demos](https://ni2002ka.github.io/ee102a-marimo-visuals/)
 
 ## Run locally
