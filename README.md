@@ -5,6 +5,8 @@ Uses the same notebook-per-page GitHub Pages setup as [cvxpy-marimo-visuals](htt
 
 ## Demos
 
+- [Find a signal buried in noise](https://ni2002ka.github.io/ee102a-marimo-visuals/correlation_noise_marimo/): slide a ramp template through a noisy recording, reveal its correlation peak, and explore noise, duration, and template mismatch.
+- [Fourier filtering](https://ni2002ka.github.io/ee102a-marimo-visuals/fourier_filtering_marimo/): edit the gains of the handout's 1, 10, and 30 Hz components; compare low-pass, high-pass, band-pass, and custom filters with linked time and frequency plots.
 - [Complex numbers](https://ni2002ka.github.io/ee102a-marimo-visuals/complex_numbers_marimo/): connect Cartesian and polar form, explore conjugation and arithmetic geometrically, and inspect every Nth root.
 - [Image → frequency domain](https://ni2002ka.github.io/ee102a-marimo-visuals/image_frequency_marimo/): inspect an image row, explore its 2D FFT, overlay frequency masks, and reconstruct with low-pass or high-pass filters.
 - [Laser altimetry from orbit](https://ni2002ka.github.io/ee102a-marimo-visuals/laser_altimeter_marimo/): connect circular-orbit mechanics, pulse time-of-flight, sampled terrain profiles, and equatorial versus polar ground coverage.
@@ -26,6 +28,12 @@ marimo edit notebooks/image_frequency_marimo.py
 ```
 
 Use `marimo run` instead of `marimo edit` for the app view. The root-level `image_frequency_marimo.py` is a compatibility symlink to the same notebook.
+
+Run the Fourier filtering playground:
+
+```sh
+conda run -n dev-test marimo run notebooks/fourier_filtering_marimo.py
+```
 
 ## Publish a new demo
 
